@@ -9,7 +9,7 @@ IR Reflective tape is applied to a whiteboard marker. A device is applied to eac
 
 # Scout
 Each scout consists of two circuits, each powered by a 9 volt battery.
-![20220516_145415](https://user-images.githubusercontent.com/90781321/168684414-6fb3750b-c58d-4fc3-a666-fc2e9ae29ac3.jpg width=40%)
+![20220516_145415](https://user-images.githubusercontent.com/90781321/168684414-6fb3750b-c58d-4fc3-a666-fc2e9ae29ac3.jpg)
 ![20220516_072759](https://user-images.githubusercontent.com/90781321/168684525-83288816-d222-4534-8c05-7559b22013c8.jpg)
 ![20220516_145447](https://user-images.githubusercontent.com/90781321/168684367-17d4f64f-75e0-4a6f-88f9-4ab8f0e55b34.jpg)
 ![20220516_145442](https://user-images.githubusercontent.com/90781321/168684388-3db38cf1-d481-4f0a-bcbe-572b4e280b2d.jpg)
@@ -59,14 +59,33 @@ The Data is sent from the scouts to the captain in the following format:
 <ID, Packet, Readings, Time> 
 This is read as a string and separated with key characters. Here is an example:
 "n1i1233w1022x1022y1016z1021t2780"
-**Character**     **Sequence**
-      n                 ID
-      i           packet number
-   w,x,y,z  values of each of the 4 IR
-      t            time (in ms)
+
+| Character|   Sequence    |
+| ---------| ------------- |
+|     n    |      ID       |
+|     i    | packet Number |
+|  w,x,y,z | values of 4IR |
+|     t    | time (in ms)  |
+
       
 Note the time is relative to when the arduino for that specific scout was turned on.
 
+To solve problem 2, the captain sends an IR signal containing an address, so the correct scout will respond. The command is to either send all data in the scouts buffer, or to send a specific packet.
+
+The captain simply rotates through each scout, getting the data from each buffer, then sends it to the Raspberry pi. Before it moves on to the next scout, the captain makes sure there are no packets missing, and keeps requesting the missing packet (via the IR emitter) until that packet is received.
+
+The scouts collect the IR data in a buffer until they receive a command to transmit everything. They then transmit everything (via radio). They then only send repeat information when it is requested.
+
+
 
 # Status
+All 4 scouts are complete (after around 30 hours of soldering). A better package for the captain should be constructed. Currently, the scouts can recognize commands, and can transmit the data in the buffer. The Captain can send commands and receive the data, but it is difficult to discern what control features work, because results are inconsistant. This is probably due to the fact the memory is nearly maxed out.
+
+An intermittent timing system needs to be added so that the various times can be adjusted. This would work by the captain simply requesting the time over IR, and comparing it to its clock. An adjustment vector could then be sent to the pi separately.
+
+Raspbery Pi: The program to read data from the nano is functioning, as is a program to move data over the internet. These still need to be combined.
+
+Once the data is a received, an application needs to be made on the receiving computer to process the data, to make sense of the location of the pen.
+
+
 
