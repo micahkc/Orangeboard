@@ -9,7 +9,7 @@ IR Reflective tape is applied to a whiteboard marker. A device is applied to eac
 
 # Scout
 Each scout consists of two circuits, each powered by a 9 volt battery.
-![20220516_145415](https://user-images.githubusercontent.com/90781321/168684414-6fb3750b-c58d-4fc3-a666-fc2e9ae29ac3.jpg)
+![20220516_145415](https://user-images.githubusercontent.com/90781321/168684414-6fb3750b-c58d-4fc3-a666-fc2e9ae29ac3.jpg width=40%)
 ![20220516_072759](https://user-images.githubusercontent.com/90781321/168684525-83288816-d222-4534-8c05-7559b22013c8.jpg)
 ![20220516_145447](https://user-images.githubusercontent.com/90781321/168684367-17d4f64f-75e0-4a6f-88f9-4ab8f0e55b34.jpg)
 ![20220516_145442](https://user-images.githubusercontent.com/90781321/168684388-3db38cf1-d481-4f0a-bcbe-572b4e280b2d.jpg)
