@@ -87,5 +87,6 @@ Raspbery Pi: The program to read data from the nano is functioning, as is a prog
 
 Once the data is a received, an application needs to be made on the receiving computer to process the data, to make sense of the location of the pen.
 
-
+# Note on range
+After trying several different ways to put IR emitters on the pen itself, someone suggested to me that I try IR reflective tape. The range was much too short at first, but I then bought more powerful IR emitters, which increased my range from anything I had tried (it can easily detect up to a meter). The IR tape also solved the problem of changing values when turning the pen.
 
