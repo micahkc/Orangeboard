@@ -1,5 +1,5 @@
 # Orangeboard
-The goal of this project is to create a device that digitizes writing on a whiteboard in real-time.
+The goal of this project is to create a device that digitizes writing on a whiteboard in real-time. The pen will be detected by measuring the strength of an IR signal that will bounce back (from the pen) to one of the 4 devices surrounding the board.
 
 # Overview
 IR Reflective tape is applied to a whiteboard marker. A device is applied to each corner of the whiteboard. Because the purpose of these devices is to chart the marker as it moves along the white board, I have designated these 4 nodes as "scouts". The 4 scouts communicate with a main node which I refer to as the "captain".
