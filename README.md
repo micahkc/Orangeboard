@@ -32,7 +32,7 @@ The second circuit simply powers 5 IR emmiters.
 
 The casing for each of the scouts was 3D printed with generic PLA using an Anet A8 and an Ender 3. It consists of 3 parts. The frame, the battery case, and the lid.  The stl files are included in the folder labeled "Scout Prints".
 
-# Captian
+# Captain
 The captain consists of an Arduino Nano and a Raspberry Pi Zero. Attached to the nano is a 433Mhz radio receiver as well as an IR emitter. The IR emitter draws more current than the Nano can supply, so it is powered externally (I have been using a power supply, but I intend to make it so that it plugs into the wall) and controlled with an npn transistor.
 
 ![20220516_151345](https://user-images.githubusercontent.com/90781321/168684248-dfc6c001-b953-4ec3-b2be-6d383097a03f.jpg)
@@ -68,11 +68,11 @@ This is read as a string and separated with key characters. Here is an example:
 |     t    | time (in ms)  |
 
       
-Note the time is relative to when the arduino for that specific scout was turned on.
+Note the time is the clock on the arduino right after the IR values were read. This almost solves problem 4, but not quite since it relative to when the arduino for that specific scout was turned on.
 
 To solve problem 2, the captain sends an IR signal containing an address, so the correct scout will respond. The command is to either send all data in the scouts buffer, or to send a specific packet.
 
-The captain simply rotates through each scout, getting the data from each buffer, then sends it to the Raspberry pi. Before it moves on to the next scout, the captain makes sure there are no packets missing, and keeps requesting the missing packet (via the IR emitter) until that packet is received.
+The captain simply rotates through each scout, getting the data from each buffer, then sends it to the Raspberry pi. Before it moves on to the next scout, the captain makes sure there are no packets missing, and keeps requesting the missing packet (via the IR emitter) until that packet is received (solving problem 3).
 
 The scouts collect the IR data in a buffer until they receive a command to transmit everything. They then transmit everything (via radio). They then only send repeat information when it is requested.
 
@@ -81,7 +81,7 @@ The scouts collect the IR data in a buffer until they receive a command to trans
 # Status
 All 4 scouts are complete (after around 30 hours of soldering). A better package for the captain should be constructed. Currently, the scouts can recognize commands, and can transmit the data in the buffer. The Captain can send commands and receive the data, but it is difficult to discern what control features work, because results are inconsistant. This is probably due to the fact the memory is nearly maxed out.
 
-An intermittent timing system needs to be added so that the various times can be adjusted. This would work by the captain simply requesting the time over IR, and comparing it to its clock. An adjustment vector could then be sent to the pi separately.
+An intermittent timing system needs to be added so that the various times can be adjusted (to completely solve problem 4). This would work by the captain simply requesting the time over IR, and comparing it to its clock. An adjustment vector could then be sent to the pi separately.
 
 Raspbery Pi: The program to read data from the nano is functioning, as is a program to move data over the internet. These still need to be combined.
 
