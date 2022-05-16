@@ -1,26 +1,41 @@
 # Orangeboard
-The goal of this project is to create a decive that digitizes writing on a whiteboard in real-time.
+The goal of this project is to create a device that digitizes writing on a whiteboard in real-time.
 
 # Overview
 IR Reflective tape is applied to a whiteboard marker. A device is applied to each corner of the whiteboard. Because the purpose of these devices is to chart the marker as it moves along the white board, I have designated these 4 nodes as "scouts". The 4 scouts communicate with a main node which I refer to as the "captain".
+![20220516_150625](https://user-images.githubusercontent.com/90781321/168684107-fae5b3ba-30a8-41e3-acc1-6d2115eaf488.jpg)
+
+
 
 # Scout
 Each scout consists of two circuits, each powered by a 9 volt battery.
+![20220516_145415](https://user-images.githubusercontent.com/90781321/168684414-6fb3750b-c58d-4fc3-a666-fc2e9ae29ac3.jpg)
+![20220516_072759](https://user-images.githubusercontent.com/90781321/168684525-83288816-d222-4534-8c05-7559b22013c8.jpg)
+![20220516_145447](https://user-images.githubusercontent.com/90781321/168684367-17d4f64f-75e0-4a6f-88f9-4ab8f0e55b34.jpg)
+![20220516_145442](https://user-images.githubusercontent.com/90781321/168684388-3db38cf1-d481-4f0a-bcbe-572b4e280b2d.jpg)
+
+
 The main circuit consists of 4 main components:
 1. Arduino Nano
 2. 4 IR Receivers
 3. 1 IR Communication Receiver
 4. 1 433MHz Radio Transmitter
-Here is the schematic:
 
-The second circuit simply powers 5 IR emmiters. The schematic:
+![20220516_152108](https://user-images.githubusercontent.com/90781321/168684692-03326296-41d2-4e42-8b12-6359d9db6340.jpg)
+![20220516_150727](https://user-images.githubusercontent.com/90781321/168684856-28e164aa-dbbf-4cea-a803-66df8609720d.jpg)
 
+The second circuit simply powers 5 IR emmiters.
+
+
+![20220516_082744](https://user-images.githubusercontent.com/90781321/168685090-4d4c9673-7224-4c8a-a969-1c5a5bb6dbba.jpg)
 
 
 The casing for each of the scouts was 3D printed with generic PLA using an Anet A8 and an Ender 3. It consists of 3 parts. The frame, the battery case, and the lid.  The stl files are included in the folder labeled "Scout Prints".
 
 # Captian
-The captain consists of an Arduino Nano and a Raspberry Pi Zero. Attached to the nano is a 433Mhz radio receiver as well as an IR emitter. The IR emitter draws more current than the Nano can supply, so it is powered externally and controlled with an npn transistor.
+The captain consists of an Arduino Nano and a Raspberry Pi Zero. Attached to the nano is a 433Mhz radio receiver as well as an IR emitter. The IR emitter draws more current than the Nano can supply, so it is powered externally (I have been using a power supply, but I intend to make it so that it plugs into the wall) and controlled with an npn transistor.
+
+![20220516_151345](https://user-images.githubusercontent.com/90781321/168684248-dfc6c001-b953-4ec3-b2be-6d383097a03f.jpg)
 
 # Networking
 This project relies on 5 nodes interacting dynamically with each other, so networking is essential to the project. The protocol I came up with had to solve several problems:
@@ -54,4 +69,4 @@ Note the time is relative to when the arduino for that specific scout was turned
 
 
 # Status
-4
+
